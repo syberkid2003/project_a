@@ -1,0 +1,86 @@
+{% extends "user_base.html"%}
+{%block topHead%} SATTAVA INFOTECH  {%endblock topHead%}
+{%block css%} 
+{%endblock css%}
+{%block content%} 
+<div class="page-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-7">
+        <img src="{% url 'video_feed' %} " id="video">
+        <!-- <video id="videoElement" autoplay></video> -->
+        <audio id="audioElement" autoplay></audio><br>
+        <button id="startButton" class="btn btn-warning" style="margin-left: 70%;">Start Setup</button>
+      </div>
+      <div class="col-lg-5">
+        <div class="row" style="margin-top: 50%;">
+          <div class="col">
+            <a  class="btn btn-primary" href="{% url 'take_test_ongoing'%}" id="starter">Start Test Now</a>
+          </div>
+          <div class="col">
+            <a href="{% url 'user_home'%}" class="btn btn-danger" id="stoper">Take Test Later</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script>
+        document.getElementById("starter").style.display = "none";
+        document.getElementById("stoper").style.display = "none";
+        document.getElementById("video").style.display = "none";
+        const videoElement = document.getElementById("videoElement");
+        const audioElement = document.getElementById("audioElement");
+        const startButton = document.getElementById("startButton");
+        async function accessMediaDevices() {
+          // const videoElement = document.getElementById("videoElement");
+          const audioElement = document.getElementById("audioElement");
+          // try {
+          //   const stream = await navigator.mediaDevices.getUserMedia({
+          //     video: true,
+          //     audio: true,
+          //   });
+          //   videoElement.srcObject = stream;
+          //   audioElement.srcObject = stream;
+          // } catch (error) {
+          //   console.error("Error accessing media devices:", error);
+          // }
+        }
+
+      
+
+        startButton.addEventListener("click", async () => {
+          try {
+            accessMediaDevices();
+
+            document.getElementById("starter").style.display = "block";
+            document.getElementById("stoper").style.display = "block";
+            document.getElementById("video").style.display = "block";
+            document.getElementById("startButton").style="margin-left: 40%;"
+          } catch (error) {
+            console.error("Error accessing media devices:", error);
+          }
+        });
+
+        
+        // const test = document.getElementById("starter")
+        // test.addEventListener("click", async () => {
+        //   try {
+        //     if (mediaStream) {
+        //       const tracks = mediaStream.getTracks();
+        //       tracks.forEach(function(track) {
+        //           track.stop();
+        //       });
+        //       videoElement.srcObject = null;
+        //       startButton.disabled = false;
+        //       stopButton.disabled = true;
+        //       audioElement.srcObject = stream;
+        //       window.location.href = "{% url 'take_test_ongoing' %}";
+        //   }   
+        //   } catch (error) {
+        //     console.error("Error accessing media devices:", error);
+        //   }
+        // });
+    </script>
+  </div>
+</div>
+{%endblock content%}

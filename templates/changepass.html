@@ -1,0 +1,49 @@
+{% extends "user_base.html" %}
+
+{% block content%}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="card-body p-4">
+        <div class="p-2 mt-4">
+
+            <form method = "post" > {% csrf_token %}
+                <p class="text-center" style=" color: red;"> {{error}}</p>
+                <p class="text-center" style="color: green;">{{suc}}</p>
+                <div class="mb-3">
+                    
+                    <label class="form-label" for="password-input">Old Password</label>
+                    <div class="position-relative auth-pass-inputgroup mb-3">
+                        <input type="password" class="form-control pe-5 password-input" name="old" placeholder="Enter Old  Password" id="password-input">
+                        
+                    </div>
+
+                    <label class="form-label" for="password-input">New Password</label>
+                    <div class="position-relative auth-pass-inputgroup mb-3">
+                        <input type="password" class="form-control pe-5 password-input" name="new" placeholder="Enter New Password" id="password-input">
+                        
+                    </div>
+
+
+                    <label class="form-label" for="password-input">Re-Enter Password</label>
+                    <div class="position-relative auth-pass-inputgroup mb-3">
+                        <input type="password" class="form-control pe-5 password-input" name="new2" placeholder="Re-Enter New password" id="password-input">
+
+                    </div>
+                </div>
+
+                
+
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-success w-100">Update Password</button>
+                </div>
+            </form>
+        </div>
+        </div>
+    </div>
+    <!-- container-fluid -->
+</div>
+
+
+
+{% endblock content%}

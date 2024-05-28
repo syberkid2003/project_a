@@ -1,0 +1,181 @@
+
+
+{% extends "super_admin_base.html"%}
+{% load static %}
+{%block title%} SATTVA INFOTECH (Colleges) {% endblock title%}
+{% block content%}
+
+<!-- App favicon -->
+<link rel="shortcut icon" href="{% static '/images/favicon.ico'%}">
+
+<!-- Layout config Js -->
+<script src="{% static '/js/layout.js'%}"></script>
+<!-- Bootstrap Css -->
+<link href="{% static '/css/bootstrap.min.css'%}" rel="stylesheet" type="text/css" />
+<!-- Icons Css -->
+<link href="{% static '/css/icons.min.css'%}" rel="stylesheet" type="text/css" />
+<!-- App Css-->
+<link href="{% static '/css/app.min.css'%}" rel="stylesheet" type="text/css" />
+<!-- custom Css-->
+<link href="{% static '/css/custom.min.css'%}" rel="stylesheet" type="text/css" />
+
+<div class="row justify-content-center" style="margin-top :  5% ;">
+    <div class="col-md-12 col-lg-12 col-xl-12">
+        <div class="card mt-12 card-bg-fill">
+           
+            <div class="card-body p-4">
+                <div class="p-2 mt-4 col-md-12">
+                    <h1 class="text-success text-center"> Add an Employee</h1>
+                    <p class="text-center text-success">{{msg}}</p>
+                    <form class="needs-validation" novalidate id="myForm" method ="POST" enctype="multipart/form-data" >  {% csrf_token %}
+
+                        <div class="row">
+                            <div class="col-md-6">
+                            <label for="useremail" class="form-label" >Email <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" style="word-break:normal;" name="mail" id="useremail" placeholder="Enter email address" required>
+                            <div class="invalid-feedback">
+                                Please enter email
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="username" class="form-label">Employee Name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control"  name="name" id="username" placeholder="Enter {{Username}}" required>
+                            <div class="invalid-feedback">
+                                Please enter Employee Name
+                            </div>
+                        </div>
+                        
+                        <!-- <div class="mb-3">
+                            
+                        </div> -->
+
+                        <div class="mb-3 col-md-6">
+                            <label for="username" class="form-label">Profile<span class="text-danger">*</span></label>
+                            <input type="file" class="form-control" name="pic" id="username" required>
+                            <div class="invalid-feedback">
+                                Please enter Profile
+                            </div>
+                        </div>
+
+                        <div class="mb-3 col-md-6">
+                            <label for="username" class="form-label">Employee Id <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="emp_id" id="username" placeholder="Enter Employee id" required>
+                            <div class="invalid-feedback">
+                                Please enter Employee Id
+                            </div>
+                        </div>
+
+                        <div class="mb-3 col-md-6">
+                            <label for="username" class="form-label">Contact<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="contact" id="username" placeholder="Enter user contact" required>
+                            <div class="invalid-feedback">
+                                Please enter Contact
+                            </div>
+                        </div>
+
+                        
+                    
+
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label" for="password-input">Role<span class="text-danger">*</span></label>
+                            <div class="position-relative auth-pass-inputgroup">
+                                <select name="uni" id="cars" class="form-control pe-5 password-input">
+                                    <option value="Coustomer Support">Coustomer Support</option>
+                                    <option value="Python developer">Python developer</option>    
+                                </select>     
+                                <div class="invalid-feedback">
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 col-md-12">
+                            <label for="username" class="form-label">Description<span class="text-danger">*</span></label>
+
+                            <textarea rows="10" cols="20"  class="form-control" name="description" required>Enter Employee discription</textarea>
+                            <div class="invalid-feedback">
+                                Please enter the Employee Description
+                            </div>
+                        </div>
+
+
+                        
+
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label" for="password-input">Password<span class="text-danger">*</span></label>
+                            <div class="position-relative auth-pass-inputgroup">
+                                <input type="password" class="form-control pe-5 password-input" name="pswd1" onpaste="return false" placeholder="Enter password" id="password-input" aria-describedby="passwordInput" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                                <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon material-shadow-none" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
+                                <div class="invalid-feedback">
+                                    Please enter password
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label" for="password-input">Re-enter Password<span class="text-danger">*</span></label>
+                            <div class="position-relative auth-pass-inputgroup">
+                                <input type="password" class="form-control pe-5 password-input" name="pswd2" onpaste="return false" placeholder="Enter password" id="password-input" aria-describedby="passwordInput" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                                <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon material-shadow-none" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
+                                <div class="invalid-feedback">
+                                    Please re-enter password
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                        
+
+                        <div class="mb-4">
+                            
+                            <p class="mb-0 fs-12 text-muted fst-italic"><input type="checkbox" class="form-check-input" name="terms"  id="terms-input" value="Agreed" required>By registering you agree to the SATTVA <a href="" onclick="TermsAndConditions()" class="text-primary text-decoration-underline fst-normal fw-medium">Terms of Use</a></p>
+                        </div>
+
+                        <div id="password-contain" class="p-3 bg-light mb-2 rounded">
+                            <h5 class="fs-13">Password must contain:</h5>
+                            <p id="pass-length" class="invalid fs-12 mb-2">Minimum <b>8 characters</b></p>
+                            <p id="pass-lower" class="invalid fs-12 mb-2">At <b>lowercase</b> letter (a-z)</p>
+                            <p id="pass-upper" class="invalid fs-12 mb-2">At least <b>uppercase</b> letter (A-Z)</p>
+                            <p id="pass-number" class="invalid fs-12 mb-0">A least <b>number</b> (0-9)</p>
+                        </div>
+
+                        <div class="hstack gap-2 justify-content-end">
+                            <button type="submit" class="btn btn-soft-success">create</button>
+                            <button type="reset" class="btn btn-soft-danger ">Cancel</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+            <!-- end card body -->
+        </div>
+        <!-- end card -->
+
+        
+
+    </div>
+</div>
+       
+
+
+    <script src="{% static '/libs/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+    <script src="{% static '/libs/simplebar/simplebar.min.js'%}"></script>
+    <script src="{% static '/libs/node-waves/waves.min.js'%}"></script>
+    <script src="{% static '/libs/feather-icons/feather.min.js'%}"></script>
+    <script src="{% static '/js/pages/plugins/lord-icon-2.1.0.js'%}"></script>
+    <script src="{% static '/js/plugins.js'%}"></script>
+    <script src="{% static '/js/style.js'%}"></script>
+
+    <!-- particles js -->
+    <script src="{% static '/libs/particles.js/particles.js'%}"></script>
+    <!-- particles app js -->
+    <script src="{% static '/js/pages/particles.app.js'%}"></script>
+    <!-- validation init -->
+    <script src="{% static '/js/pages/form-validation.init.js'%}"></script>
+    <!-- password create init -->
+    <script src="{% static '/js/pages/passowrd-create.init.js'%}"></script>
+
+{% endblock content%}

@@ -1,0 +1,371 @@
+{% extends "user_base.html"%}
+{%block topHead%} welcome {{user_name}} ! {%endblock topHead%}
+{%block css%} 
+{%endblock css%}
+{%block content%} 
+<div class="page-content">
+    <div class="container" >
+
+    <div class="row" >
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <form class="needs-validation" novalidate id="myForm" method ="POST"  style="margin-top: 10%;">  {% csrf_token %}
+                <div class="mb-3">
+                    <label for="useremail" class="form-label">SELECT A SUBJECT TO TAKE TEST <span class="text-danger">*</span></label>
+                    <select name="SUB" id="cars" class="form-control">
+                        <option value="PY">PYTHON</option>
+                        <option value="JAVA">JAVA</option>
+                        <option value="C">C</option>
+                        <option value="CPP">C++</option>
+                        <option value="C#">C#</option>
+                        <option value="HTML">HTML</option>
+                        <option value="JS">JAVA SCRIPT</option>
+                        <option value="R">R LANGUAGE</option>
+                        <option value="GO">GO LANGUAGE</option>
+                        <option value="SWIFT">SWIFT</option>
+                        <option value="RUST">RUST</option>
+                        <option value="DBMS">DBMS</option>
+                        <option value="PHP">PHP</option>
+                      </select>
+                    
+                    <div class="invalid-feedback">
+                        Please select the subject
+                    </div>
+                </div>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+    <div class="row" style="margin-bottom: 5%;">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <button type="submit" class="btn btn-primary">select subject</button>
+            <a href="{% url 'user_home'%}" class="btn btn-warning">BACK TO HOME</a>
+        </form>
+        </div>
+        <div class="col-lg-4"></div>
+</div>
+
+<div class="container-fluid">
+    <table class="table table-hover table-borderless table-centered align-middle table-nowrap mb-0">
+        <thead class="text-muted bg-light-subtle">
+            <tr>
+                <th>Subject</th>
+                <th>Booking date</th>
+                <th>Payment Date</th>
+                <th>Payment id</th>
+            </tr>
+        </thead><!-- end thead -->
+        <tbody>
+            {% for data in python%}
+            <tr>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <h6 class="fs-14 mb-0">PYTHON</h6>
+                        </div>
+                    </div>
+                </td>
+                <td> {{data.time}}</td>
+                <td>
+                    <h6 >{{data.pay_time}} </h6>
+                </td>
+                
+                <td>
+                    {% if data.payment != 'False' %}
+                    <h6 class="text-success fs-13 mb-0">{{data.payment}} </h6>
+                    {% endif %}
+                    {% if data.payment == 'False' %}
+                    <h6 class="text-danger fs-13 mb-0">{{data.payment}} </h6>
+                    {% endif %}
+                </td>
+            </tr><!-- end -->
+            {% endfor %}
+
+            {% for data in chash%}
+            <tr>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <h6 class="fs-14 mb-0">C#</h6>
+                        </div>
+                    </div>
+                </td>
+                <td> {{data.time}}</td>
+                <td>
+                    <h6>{{data.pay_time}} </h6>
+                </td>
+                
+                <td>
+                    {% if data.payment != 'False' %}
+                    <h6 class="text-success fs-13 mb-0">{{data.payment}} </h6>
+                    {% endif %}
+                    {% if data.payment == 'False' %}
+                    <h6 class="text-danger fs-13 mb-0">Payment Faild! </h6>
+                    {% endif %}
+                    
+                </td>
+            </tr><!-- end -->
+            {% endfor %}
+
+            {% for data in clang%}
+            <tr>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <h6 class="fs-14 mb-0">C</h6>
+                        </div>
+                    </div>
+                </td>
+                <td> {{data.time}}</td>
+                <td>{{data.pay_time}}</td>
+                <td>
+                    {% if data.payment != 'False' %}
+                    <h6 class="text-success fs-13 mb-0">{{data.payment}} </h6>
+                    {% endif %}
+                    {% if data.payment == 'False' %}
+                    <h6 class="text-danger fs-13 mb-0">Payment Faild! </h6>
+                    {% endif %}
+                    
+                </td>
+            </tr><!-- end -->
+            {% endfor %}
+
+            {% for data in cpplang%}
+            <tr>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <h6 class="fs-14 mb-0">C++</h6>
+                        </div>
+                    </div>
+                </td>
+                <td> {{data.time}}</td>
+                <td>{{data.pay_time}}</td>
+                <td>
+                    {% if data.payment != 'False' %}
+                    <h6 class="text-success fs-13 mb-0">{{data.payment}} </h6>
+                    {% endif %}
+                    {% if data.payment == 'False' %}
+                    <h6 class="text-danger fs-13 mb-0">Payment Faild! </h6>
+                    {% endif %}
+                    
+                </td>
+            </tr><!-- end -->
+            {% endfor %}
+
+            {% for data in dbms%}
+            <tr>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <h6 class="fs-14 mb-0">DBMS</h6>
+                        </div>
+                    </div>
+                </td>
+                <td> {{data.time}}</td>
+                
+                <td>{{data.pay_time}}</td>
+                <td>
+                    {% if data.payment != 'False' %}
+                    <h6 class="text-success fs-13 mb-0">{{data.payment}} </h6>
+                    {% endif %}
+                    {% if data.payment == 'False' %}
+                    <h6 class="text-danger fs-13 mb-0">Payment Faild! </h6>
+                    {% endif %}
+                    
+                </td>
+            </tr><!-- end -->
+            {% endfor %}
+
+            {% for data in golang%}
+            <tr>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <h6 class="fs-14 mb-0">GO</h6>
+                        </div>
+                    </div>
+                </td>
+                <td> {{data.time}}</td>
+                <td>{{data.pay_time}}</td>
+                <td>
+                    {% if data.payment != 'False' %}
+                    <h6 class="text-success fs-13 mb-0">{{data.payment}} </h6>
+                    {% endif %}
+                    {% if data.payment == 'False' %}
+                    <h6 class="text-danger fs-13 mb-0">Payment Faild! </h6>
+                    {% endif %}
+                    
+                </td>
+            </tr><!-- end -->
+            {% endfor %}
+
+            {% for data in html%}
+            <tr>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <h6 class="fs-14 mb-0">HTML</h6>
+                        </div>
+                    </div>
+                </td>
+                <td> {{data.time}}</td>
+                <td>{{data.pay_time}}</td>
+                <td>
+                    {% if data.payment != 'False' %}
+                    <h6 class="text-success fs-13 mb-0">{{data.payment}} </h6>
+                    {% endif %}
+                    {% if data.payment == 'False' %}
+                    <h6 class="text-danger fs-13 mb-0">Payment Faild! </h6>
+                    {% endif %}
+                    
+                </td>
+            </tr><!-- end -->
+            {% endfor %}
+
+            {% for data in js%}
+            <tr>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <h6 class="fs-14 mb-0">Java Script</h6>
+                        </div>
+                    </div>
+                </td>
+                <td> {{data.time}}</td>
+                <td>{{data.pay_time}}</td>
+                <td>
+                    {% if data.payment != 'False' %}
+                    <h6 class="text-success fs-13 mb-0">{{data.payment}} </h6>
+                    {% endif %}
+                    {% if data.payment == 'False' %}
+                    <h6 class="text-danger fs-13 mb-0">Payment Faild! </h6>
+                    {% endif %}
+                    
+                </td>
+            </tr><!-- end -->
+            {% endfor %}
+
+            {% for data in java%}
+            <tr>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <h6 class="fs-14 mb-0">JAVA</h6>
+                        </div>
+                    </div>
+                </td>
+                <td> {{data.time}}</td>
+                <td>{{data.pay_time}}</td>
+                <td>
+                    {% if data.payment != 'False' %}
+                    <h6 class="text-success fs-13 mb-0">{{data.payment}} </h6>
+                    {% endif %}
+                    {% if data.payment == 'False' %}
+                    <h6 class="text-danger fs-13 mb-0">Payment Faild! </h6>
+                    {% endif %}
+                    
+                </td>
+            </tr><!-- end -->
+            {% endfor %}
+
+            {% for data in php%}
+            <tr>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <h6 class="fs-14 mb-0">PHP</h6>
+                        </div>
+                    </div>
+                </td>
+                <td> {{data.time}}</td>
+                <td>{{data.pay_time}}</td>
+                <td>
+                    {% if data.payment != 'False' %}
+                    <h6 class="text-success fs-13 mb-0">{{data.payment}} </h6>
+                    {% endif %}
+                    {% if data.payment == 'False' %}
+                    <h6 class="text-danger fs-13 mb-0">Payment Faild! </h6>
+                    {% endif %}
+                    
+                </td>
+            </tr><!-- end -->
+            {% endfor %}
+
+            {% for data in rlang%}
+            <tr>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <h6 class="fs-14 mb-0">PHP</h6>
+                        </div>
+                    </div>
+                </td>
+                <td> {{data.time}}</td>
+                <td>{{data.pay_time}}</td>
+                <td>
+                    {% if data.payment != 'False' %}
+                    <h6 class="text-success fs-13 mb-0">{{data.payment}} </h6>
+                    {% endif %}
+                    {% if data.payment == 'False' %}
+                    <h6 class="text-danger fs-13 mb-0">Payment Faild! </h6>
+                    {% endif %}
+                    
+                </td>
+            </tr><!-- end -->
+            {% endfor %}
+
+            {% for data in rust%}
+            <tr>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <h6 class="fs-14 mb-0">RUST</h6>
+                        </div>
+                    </div>
+                </td>
+                <td> {{data.time}}</td>
+                <td>{{data.pay_time}}</td>
+                <td>
+                    {% if data.payment != 'False' %}
+                    <h6 class="text-success fs-13 mb-0">{{data.payment}} </h6>
+                    {% endif %}
+                    {% if data.payment == 'False' %}
+                    <h6 class="text-danger fs-13 mb-0">Payment Faild! </h6>
+                    {% endif %}
+                    
+                </td>
+            </tr><!-- end -->
+            {% endfor %}
+
+            {% for data in swift%}
+            <tr>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <h6 class="fs-14 mb-0">SWIFT</h6>
+                        </div>
+                    </div>
+                </td>
+                <td> {{data.time}}</td>
+                <td>{{data.pay_time}}</td>
+                <td>
+                    {% if data.payment != 'False' %}
+                    <h6 class="text-success fs-13 mb-0">{{data.payment}} </h6>
+                    {% endif %}
+                    {% if data.payment == 'False' %}
+                    <h6 class="text-danger fs-13 mb-0">Payment Faild! </h6>
+                    {% endif %}
+                    
+                </td>
+            </tr><!-- end -->
+            {% endfor %}
+        </tbody><!-- end tbody -->
+    </table><!-- end table -->
+   
+
+</div>
+
+
+</div>
+{%endblock content%}

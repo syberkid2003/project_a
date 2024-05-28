@@ -1,0 +1,13 @@
+{% extends "user_base.html"%}
+{%block topHead%} SATTAVA INFOTECH  {%endblock topHead%}
+{%block css%} 
+{%endblock css%}
+{%block content%} 
+{{lock}}
+<div class="page-content">
+    <div class="container-fluid">
+        <h1>Congratulatioons Your Test has been compleated!</h1>
+        <p class="text-center" style="margin-top: 5%;"><a href="{%url 'test_result'%}" class="btn btn-primary">view Result!</a></p>
+    </div>
+</div>
+{%endblock content%} 

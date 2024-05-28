@@ -1,0 +1,82 @@
+{% extends "emp_base.html"%}
+{% load static %}
+
+
+{%block content%} 
+
+
+
+<div class="row justify-content-center" style="margin-top :  5% ;">
+    <div class="col-md-12 col-lg-12 col-xl-12">
+        <div class="card mt-12 card-bg-fill">
+           
+            <div class="card-body p-4">
+                <div class="p-2 mt-4 col-md-12">
+                    <h1 class="text-success text-center">Solving A PROBLEM!</h1>
+                    <p class="text-center text-success">{{msg}}</p>
+                    <form class="needs-validation"  id="myForm" method ="POST" enctype="multipart/form-data" >  {% csrf_token %}
+
+                        <div class="col-md-6">
+                            <label for="username" class="form-label">Name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control"  name="name" id="username" value="{{problem.name}}" required readonly>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="username" class="form-label">Seacker type <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control"  name="name" id="username" value="{{problem.by_from}}" required readonly>
+                           
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="username" class="form-label">Seaker id <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control"  name="name" id="username" value="{{problem.emp_id}}" required readonly>
+                            
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="username" class="form-label">Title <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control"  name="name" id="username" value="{{problem.title}}" required readonly>
+                            
+                        </div>
+                        
+                        <div class="mb-3 col-md-12">
+                            <label for="username" class="form-label">Description<span class="text-danger">*</span></label>
+
+                            <textarea rows="10" cols="20"  class="form-control" name="description" required readonly>{{problem.description}}</textarea>
+                            
+                        </div>
+
+
+                        <div class="mb-3 col-md-12">
+                            <label for="username" class="form-label">Solution<span class="text-danger">*</span></label>
+
+                            <textarea rows="10" cols="20"  class="form-control" name="solution" required>{{problem.solution}}</textarea>
+                            <div class="invalid-feedback">
+                                Please enter the Solutuion
+                            </div>
+                        </div>
+
+
+                        <div class="hstack gap-2 justify-content-end">
+                            <button type="submit" class="btn btn-soft-success">SUBMIT</button>
+                            <a  href="{% url 'all_problems'%}" class="btn btn-soft-danger ">Cancel</a>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+            <!-- end card body -->
+        </div>
+        <!-- end card -->
+
+        
+
+    </div>
+</div>
+       
+
+
+
+
+{%endblock content%}

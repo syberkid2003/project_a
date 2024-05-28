@@ -1,0 +1,13 @@
+{% extends "user_base.html"%}
+{%block topHead%} welcome {{user_name}} ! {%endblock topHead%}
+{%block css%} 
+{%endblock css%}
+{%block content%} 
+<div class="page-content">
+    <div class="container-fluid">
+        
+        <h1>payement done! exam link sended to your mail .<br> your payment ID :- {{trans_id}} </h1>
+    </div>
+</div>
+
+{% endblock content%}

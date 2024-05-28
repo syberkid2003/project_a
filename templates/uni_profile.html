@@ -1,0 +1,105 @@
+{% extends "university_base.html"%}
+{% load static %}
+{% block title%}SATTVA TECHINFO (uni Profile){% endblock title%}
+{%block content%}
+
+<link rel="shortcut icon" href="{% static 'images/favicon.ico'%}">
+<script src="{% static 'js/pages/profile-setting.init.js '%}"></script>
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <div class="position-relative mx-n4 mt-n4">
+            <div class="profile-wid-bg profile-setting-img">
+                <img src="{% static '/images/profile-bg.jpg'%}" class="profile-wid-img" alt="">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xxl-3">
+                <div class="card mt-n5">
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <div class="profile-user position-relative d-inline-block mx-auto  mb-4">
+                                <img src="{{uni.profile.url}}" class="rounded-circle avatar-xl img-thumbnail user-profile-image material-shadow" alt="user-profile-image">
+                            </div>
+                            <p class="text-muted mb-0">{{uni.name}}</p>
+                        </div>
+                    </div>
+                </div>
+                <!--end card-->
+            </div>
+            <!--end col-->
+            <div class="col-xxl-9">
+                <div class="card mt-xxl-n5">
+                    <div class="card-body p-4">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="personalDetails" role="tabpanel">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="firstnameInput" class="form-label">uni Name</label>
+                                                <input type="text" class="form-control" id="firstnameInput" name="name" placeholder="{{uni.name}}" value="{{uni.name}}" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="phonenumberInput" class="form-label">Phone Number</label>
+                                                <input type="text" class="form-control" id="phonenumberInput" name="phno" placeholder="{{uni.contact}}" value="{{uni.contact}}" readonly>
+                                            </div>
+                                        </div>
+                                        <!--end col-->
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="emailInput" class="form-label">Email Address</label>
+                                                <input type="email" class="form-control" id="emailInput" name="mail" placeholder="{{uni.email}}" value="{{uni.email}}" readonly>
+                                            </div>
+                                        </div>
+                                        <!--end col-->
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="emailInput" class="form-label">City</label>
+                                                <input type="text" class="form-control" name="clg" id="emailInput" placeholder="{{uni.city}}" value="{{uni.city}}">
+                                            </div>
+                                        </div>
+                                        
+                                        <!--end col-->
+                                    
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="designationInput" class="form-label">university code</label>
+                                                <input type="text" class="form-control" name="uni" id="designationInput" placeholder="{{uni.uni}}" value="{{uni.uni}}">
+                                            </div>
+                                        </div>
+                                        <!--end col-->
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="lastnameInput" class="form-label">Postal Code</label>
+                                                <input type="text" class="form-control" id="lastnameInput" name="hall" placeholder="{{uni.postal}}" value="{{uni.postal}}" readonly>
+                                            </div>
+                                        </div>
+                                        <!--end col-->
+                                        <div class="col-lg-12">
+                                            <div class="hstack gap-2 justify-content-end">
+                                                <a href="" class="btn btn-soft-success">Update</a>
+                                            </div>
+                                        </div>
+                                        <!--end col-->
+                                    </div>
+                                    <!--end row-->
+                                </form>
+                            </div>
+                            <!--end tab-pane-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end col-->
+        </div>
+        <!--end row-->
+
+    </div>
+    <!-- container-fluid -->
+</div><!-- End Page-content -->
+
+{% endblock content%}

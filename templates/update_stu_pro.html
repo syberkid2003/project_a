@@ -1,0 +1,129 @@
+{% extends "user_base.html"%}
+{% load static %}
+{% block title%}SATTVA TECHINFO (Student profile){% endblock title%}
+{%block content%}
+<link rel="shortcut icon" href="{% static 'images/favicon.ico'%}">
+<script src="{% static 'js/pages/profile-setting.init.js '%}"></script>
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <div class="position-relative mx-n4 mt-n4">
+            <div class="profile-wid-bg profile-setting-img">
+                <img src="{% static '/images/profile-bg.jpg'%}" class="profile-wid-img" alt="">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xxl-3">
+                <div class="card mt-n5">
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <div class="profile-user position-relative d-inline-block mx-auto  mb-4">
+                                <img src="{{student.profile.url}}" class="rounded-circle avatar-xl img-thumbnail user-profile-image material-shadow" alt="user-profile-image">
+                            </div>
+                            <h5 class="fs-16 mb-1">{{student.name}}</h5>
+                            <p class="text-muted mb-0">Student</p>
+                        </div>
+                    </div>
+                </div>
+                <!--end card-->
+            </div>
+            <!--end col-->
+            <div class="col-xxl-9">
+                <div class="card mt-xxl-n5">
+                    <div class="card-body p-4">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="personalDetails" role="tabpanel">
+                                <form  method="post" enctype="multipart/form-data"> {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="firstnameInput" class="form-label">Name</label>
+                                                <input type="text" class="form-control" id="firstnameInput" name="name" placeholder="{{student.name}}" value="{{student.name}}">
+                                            </div>
+                                        </div>
+                                        <!--end col-->
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="lastnameInput" class="form-label">Hallticket</label>
+                                                <input type="text" class="form-control" id="lastnameInput" name="hall" placeholder="{{student.hall_no}}" value="{{student.hall_no}}">
+                                            </div>
+                                        </div>
+                                        <!--end col-->
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="phonenumberInput" class="form-label">Phone Number</label>
+                                                <input type="text" class="form-control" id="phonenumberInput" name="phno" placeholder="{{student.contact}}" value="{{student.contact}}">
+                                            </div>
+                                        </div>
+                                        <!--end col-->
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="emailInput" class="form-label">Email Address</label>
+                                                <input type="email" class="form-control" id="emailInput" name="mail" placeholder="{{student.email}}" value="{{student.email}}" readonly>
+                                            </div>
+                                        </div>
+                                        <!--end col-->
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="emailInput" class="form-label">college</label>
+                                                <input type="text" class="form-control" name="clg" id="emailInput" placeholder="{{student.college}}" value="{{student.college}}">
+                                            </div>
+                                        </div>
+                                        <!--end col-->
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="emailInput" class="form-label">College code </label>
+                                                <input type="text" class="form-control" name="clg_code" id="emailInput" placeholder="{{student.clg_code}}" value="{{student.clg_code}}">
+                                            </div>
+                                        </div>
+                                        <!--end col-->
+                                    
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="designationInput" class="form-label">university code</label>
+                                                <input type="text" class="form-control" name="uni" id="designationInput" placeholder="{{student.university}}" value="{{student.university}}">
+                                            </div>
+                                        </div>
+                                        <!--end col-->
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="websiteInput1" class="form-label">user name </label>
+                                                <input type="text" class="form-control" name="user" id="websiteInput1" placeholder="{{student.user_name }}" value="{{student.user_name }}" />
+                                            </div>
+                                        </div>
+                                        <!--end col-->
+                                        <div class="col-lg-12">
+                                            <div class="mb-3 pb-2">
+                                                <label for="exampleFormControlTextarea" class="form-label">Change Profile</label>
+                                                <input type="file" class="form-control" name="pic" id="exampleFormControlTextarea"  title="{{student.profile}}" value="{{student.profile}}" />
+
+                                            </div>
+                                        </div>
+                                        <!--end col-->
+                                        <div class="col-lg-12">
+                                            <div class="hstack gap-2 justify-content-end">
+                                                <button type="submit" class="btn btn-soft-success">Update</button>
+                                                <button type="reset" class="btn btn-soft-danger ">Reset</button>
+                                            </div>
+                                        </div>
+                                        <!--end col-->
+                                    </div>
+                                    <!--end row-->
+                                </form>
+                            </div>
+                            <!--end tab-pane-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end col-->
+        </div>
+        <!--end row-->
+
+    </div>
+    <!-- container-fluid -->
+</div><!-- End Page-content -->
+
+{% endblock content %}

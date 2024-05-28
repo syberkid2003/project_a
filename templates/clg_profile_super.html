@@ -1,0 +1,217 @@
+{% extends "university_base.html"%}
+{% load static %}
+{% block title%}SATTVA TECHINFO (college Profile){% endblock title%}
+{%block content%}
+
+<link rel="stylesheet" href="{% static 'libs/swiper/swiper-bundle.min.css' %}">
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="profile-foreground position-relative mx-n4 mt-n4">
+            <div class="profile-wid-bg">
+                <img src="assets/images/profile-bg.jpg" alt="" class="profile-wid-img" />
+            </div>
+        </div>
+        <div class="pt-4 mb-4 mb-lg-3 pb-lg-4 profile-wrapper">
+            <div class="row g-4">
+                <div class="col-auto">
+                    <div class="avatar-lg">
+                        <img src="{{college.profile.url}}" alt="user-img" class="img-thumbnail rounded-circle" />
+                    </div>
+                </div>
+                <!--end col-->
+                <div class="col">
+                    <div class="p-2">
+                        <h3 class="text-white mb-1">{{college.principal}}</h3>
+                        <p class="text-white text-opacity-75">{{college.name}}</p>
+                        <div class="hstack text-white-50 gap-1">
+                            <div class="me-2"><i class="ri-map-pin-user-line me-1 text-white text-opacity-75 fs-16 align-middle"></i>in {{college.city}}</div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <!--end col-->
+                <!-- <div class="col-12 col-lg-auto order-last order-lg-0">
+                    <div class="row text text-white-50 text-center">
+                        <div class="col-lg-6 col-4">
+                            <div class="p-2">
+                                <h4 class="text-white mb-1">24.3K</h4>
+                                <p class="fs-14 mb-0">Followers</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-4">
+                            <div class="p-2">
+                                <h4 class="text-white mb-1">1.3K</h4>
+                                <p class="fs-14 mb-0">Following</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!--end col-->
+
+            </div>
+            <!--end row-->
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                    <div class="tab-content pt-4 text-muted">
+                        <div class="tab-pane active" id="overview-tab" role="tabpanel">
+                            <div class="row">
+                                <div class="col-xxl-8">
+
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title mb-3">BASIC</h5>
+                                            <div class="table-responsive">
+                                                <table class="table table-borderless mb-0">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th class="ps-0" scope="row">College Name :</th>
+                                                            <td class="text-muted">{{college.name}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="ps-0" scope="row">Mobile :</th>
+                                                            <td class="text-muted">{{college.contact}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="ps-0" scope="row">E-mail :</th>
+                                                            <td class="text-muted">{{college.email}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="ps-0" scope="row">City:</th>
+                                                            <td class="text-muted">{{college.city}}</td>
+                                                        </tr>
+                                                        
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div><!-- end card body -->
+                                    </div><!-- end card -->
+                                </div>
+                                <!--end col-->
+                                <div class="col-xxl-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title mb-3">More</h5>
+                                            <div class="table-responsive">
+                                                <table class="table table-borderless mb-0">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th class="ps-0" scope="row">College Code :</th>
+                                                            <td class="text-muted">{{college.clg_code}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="ps-0" scope="row">university Code :</th>
+                                                            <td class="text-muted">{{college.university}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="ps-0" scope="row">Postal Code :</th>
+                                                            <td class="text-muted">{{college.postal}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="ps-0" scope="row">Principal:</th>
+                                                            <td class="text-muted">{{college.principal}}</td>
+                                                        </tr>
+                                                        
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <!--end row-->
+                                        </div>
+                                        <!--end card-body-->
+                                    </div><!-- end card -->
+                                </div>
+                                <!--end col-->
+                            </div>
+                            <!--end row-->
+
+                        </div>
+                        <!--end tab-pane-->
+                </div>
+            </div>
+            <div class="col-lg-12 mt-4" >
+                <div class="card-body">
+                    <div>
+                        <div class="table-responsive table-card">
+                            <table class="table table-hover table-borderless table-centered align-middle table-nowrap mb-0">
+                                <thead class="text-muted bg-light-subtle">
+                                    <tr>
+                                        <th>Student</th>
+                                        <th>Contact</th>
+                                        <th>Hallticket</th>
+                                        <th>mail</th>
+                                        <th>college</th>
+                                        <th>college code</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead><!-- end thead -->
+                                <tbody>
+                                    {% for student in data %}
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="me-2">
+                                                    <img src="{{student.profile.url}}" alt="img" class="avatar-xxs material-shadow">
+                                                </div>
+                                                <div>
+                                                    <h6 class="fs-14 mb-0">{{student.name}}</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>{{student.contact}}</td>
+                                        <td>
+                                            <h6 class="text-success fs-13 mb-0"><i class="mdi mdi-trending-up align-middle me-1"></i>{{student.hall_no}} </h6>
+                                        </td>
+                                        <td>{{student.email}}</td>
+                                        <td>{{student.college}} </td>
+                                        <td>{{student.clg_code}} </td>
+                                        <td><a href="{% url 'student_profile_super' num=student.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i>View</a></td>
+                                    </tr><!-- end -->
+                                    {% endfor %}
+                                </tbody><!-- end tbody -->
+                            </table>
+                            <div class="noresult" style="display: none">
+                                <div class="text-center">
+                                    <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop" colors="primary:#121331,secondary:#08a88a" style="width:75px;height:75px"></lord-icon>
+                                    <h5 class="mt-2">Sorry! No Result Found</h5>
+                                    <p class="text-muted mb-0">We've searched more than 150+ invoices We did not find any invoices for you search.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end mt-3">
+                            
+                        </div>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade flip" id="deleteOrder" tabindex="-1" aria-labelledby="deleteOrderLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-body p-5 text-center">
+                                    <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop" colors="primary:#405189,secondary:#f06548" style="width:90px;height:90px"></lord-icon>
+                                    <div class="mt-4 text-center">
+                                        <h4>You are about to delete a order ?</h4>
+                                        <p class="text-muted fs-15 mb-4">Deleting your order will remove all of your information from our database.</p>
+                                        <div class="hstack gap-2 justify-content-center remove">
+                                            <button class="btn btn-link link-success fw-medium text-decoration-none" id="deleteRecord-close" data-bs-dismiss="modal"><i class="ri-close-line me-1 align-middle"></i> Close</button>
+                                            <button class="btn btn-danger" id="delete-record">Yes, Delete It</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end modal -->
+                </div>
+            </div>
+            <!--end col-->
+        </div>
+        <!--end row-->
+
+    </div><!-- container-fluid -->
+</div><!-- End Page-content -->
+
+
+
+{% endblock content%}

@@ -1,0 +1,1420 @@
+{% extends "college_base.html"%}
+{% load static %}
+{% block title%}SATTVA TECHINFO (Student check){% endblock title%}
+{%block content%}
+
+{% if text != None %}
+    <h1 class="navbar-dark bg-primary" style="color: aliceblue; text-align: center;"> {{text}}</h1>
+{% endif %}
+
+
+
+<link rel="stylesheet" href="{% static 'libs/swiper/swiper-bundle.min.css' %}">
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="profile-foreground position-relative mx-n4 mt-n4">
+            <div class="profile-wid-bg">
+                <img src="" alt="" class="profile-wid-img" />
+            </div>
+        </div>
+        <div class="pt-4 mb-4 mb-lg-3 pb-lg-4 profile-wrapper">
+            <div class="row g-4">
+                <div class="col-auto">
+                    <div class="avatar-lg">
+                        <img src="{{student.profile.url}}" alt="user-img" class="img-thumbnail rounded-circle" />
+                    </div>
+                </div>
+                <!--end col-->
+                <div class="col">
+                    <div class="p-2">
+                        <h3 class="text-white mb-1">{{student.name}}</h3>
+                        <p class="text-white text-opacity-75">Student</p>
+                        <div class="hstack text-white-50 gap-1">
+                            <div class="me-2"><i class="ri-map-pin-user-line me-1 text-white text-opacity-75 fs-16 align-middle"></i>in {{student.college}}</div>
+                        </div>
+                    </div>
+                </div>
+                <!--end col-->
+                <!-- <div class="col-12 col-lg-auto order-last order-lg-0">
+                    <div class="row text text-white-50 text-center">
+                        <div class="col-lg-6 col-4">
+                            <div class="p-2">
+                                <h4 class="text-white mb-1">24.3K</h4>
+                                <p class="fs-14 mb-0">Followers</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-4">
+                            <div class="p-2">
+                                <h4 class="text-white mb-1">1.3K</h4>
+                                <p class="fs-14 mb-0">Following</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!--end col-->
+
+            </div>
+            <!--end row-->
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div>
+                    <div class="d-flex profile-wrapper">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-pills animation-nav profile-nav gap-2 gap-lg-3 flex-grow-1" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link fs-14 active" data-bs-toggle="tab" href="#overview-tab" role="tab">
+                                    <i class="ri-airplay-fill d-inline-block d-md-none"></i> <span class="d-none d-md-inline-block">Overview</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link fs-14" data-bs-toggle="tab" href="#activities" role="tab">
+                                    <i class="ri-list-unordered d-inline-block d-md-none"></i> <span class="d-none d-md-inline-block">payment History</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link fs-14" data-bs-toggle="tab" href="#projects" role="tab">
+                                    <i class="ri-price-tag-line d-inline-block d-md-none"></i> <span class="d-none d-md-inline-block">Subjects</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link fs-14" data-bs-toggle="tab" href="#documents" role="tab">
+                                    <i class="ri-folder-4-line d-inline-block d-md-none"></i> <span class="d-none d-md-inline-block">Result</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Tab panes -->
+                    <div class="tab-content pt-4 text-muted">
+                        <div class="tab-pane active" id="overview-tab" role="tabpanel">
+                            <div class="row">
+                                <div class="col-xxl-5">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title mb-3">BASIC</h5>
+                                            <div class="table-responsive">
+                                                <table class="table table-borderless mb-0">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th class="ps-0" scope="row">Full Name :</th>
+                                                            <td class="text-muted">{{student.name}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="ps-0" scope="row">Mobile :</th>
+                                                            <td class="text-muted">{{student.contact}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="ps-0" scope="row">E-mail :</th>
+                                                            <td class="text-muted">{{student.email}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="ps-0" scope="row">College:</th>
+                                                            <td class="text-muted">{{student.college}}</td>
+                                                        </tr>
+                                                        
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div><!-- end card body -->
+                                    </div><!-- end card -->
+
+                                    
+
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title mb-4 mt-4">Skills</h5>
+                                            <div class="">
+                                                {% for data in python%}
+                                                <button class="btn btn-primary text-sucess mb-3">PYTHON</button> <br>
+                                                {% endfor %}
+                                                {% for data in chash %}
+                                                <button class="btn btn-primary text-sucess mb-3">C#</button> <br>
+                                                {% endfor %}
+                                                {% for data in clang%}
+                                                <button class="btn btn-primary text-sucess mb-3">C</button> <br>
+                                                {% endfor %}
+                                                {% for data in dbms%}
+                                                <button class="btn btn-primary text-sucess mb-3">DBMS</button> <br>
+                                                {% endfor %}
+                                                {% for data in golang%}
+                                                <button class="btn btn-primary text-sucess mb-3">GO</button> <br>
+                                                {% endfor %}
+                                                {% for data in html%}
+                                                <button class="btn btn-primary text-sucess mb-3">HTML</button> <br>
+                                                {% endfor %}
+                                                {% for data in js%}
+                                                <button class="btn btn-primary text-sucess mb-3">JAVA SCRIPT</button> <br>
+                                                {% endfor %}
+                                                {% for data in java%}
+                                                <button class="btn btn-primary text-sucess mb-3">JAVA</button> <br>
+                                                {% endfor %}
+                                                {% for data in php%}
+                                                <button class="btn btn-primary text-sucess mb-3">PHP</button> <br>
+                                                {% endfor %}
+                                                {% for data in rlang%}
+                                                <button class="btn btn-primary text-sucess mb-3">R</button> <br>
+                                                {% endfor %}
+                                                {% for data in rust%}
+                                                <button class="btn btn-primary text-sucess mb-3">RUST</button> <br>
+                                                {% endfor %}
+                                                {% for data in swift%}
+                                                <button class="btn btn-primary text-sucess mb-3">SWIFT</button> <br>
+                                                {% endfor %}
+                                                {% for data in cpplang%}
+                                                <button class="btn btn-primary text-sucess mb-3">C++</button> <br>
+                                                {% endfor %}
+                                            </div>
+                                        </div><!-- end card body -->
+                                    </div><!-- end card -->
+                                </div>
+                                <!--end col-->
+                                <div class="col-xxl-7">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title mb-3">More</h5>
+                                            <div class="table-responsive">
+                                                <table class="table table-borderless mb-0">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th class="ps-0" scope="row">College Code :</th>
+                                                            <td class="text-muted">{{student.clg_code}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="ps-0" scope="row">university Code :</th>
+                                                            <td class="text-muted">{{student.university}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="ps-0" scope="row">Hallticket Number :</th>
+                                                            <td class="text-muted">{{student.hall_no}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="ps-0" scope="row">User Name:</th>
+                                                            <td class="text-muted">{{student.user_name}}</td>
+                                                        </tr>
+                                                        
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <!--end row-->
+                                        </div>
+                                        <!--end card-body-->
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <table class="table table-hover table-borderless table-centered align-middle table-nowrap mb-0">
+                                                        <thead class="text-muted bg-light-subtle">
+                                                            <tr>
+                                                                <th>Skill</th>
+                                                                <th>Test Compleated</th>
+                                                                <th>Payment id</th>
+                                                                <th>View Result</th>
+                                                            </tr>
+                                                        </thead><!-- end thead -->
+                                                        <tbody>
+                                                            {% for data in python%}
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div>
+                                                                            <h6 class="fs-14 mb-0">PYTHON</h6>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                
+                                                                <td>
+                                                                    <h6 class="text-success fs-13 mb-0"></i>{{data.test_time}} </h6>
+                                                                </td>
+                                                                
+                                                                <td>{{data.payment}}</td>
+                                                                <td><a href="{% url 'clg_stu_rusult' sub='PY' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i></a></td>
+                                                            </tr><!-- end -->
+                                                            {% endfor %}
+                                            
+                                                            {% for data in chash%}
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div>
+                                                                            <h6 class="fs-14 mb-0">C#</h6>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                
+                                                                <td>
+                                                                    <h6 class="text-success fs-13 mb-0"></i>{{data.test_time}} </h6>
+                                                                </td>
+                                                                
+                                                                <td>{{data.payment}}</td>
+                                                                <td><a href="{% url 'clg_stu_rusult' sub='CH' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i></a></td>
+                                                            </tr><!-- end -->
+                                                            {% endfor %}
+                                            
+                                                            {% for data in clang%}
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div>
+                                                                            <h6 class="fs-14 mb-0">C</h6>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                
+                                                                <td>
+                                                                    <h6 class="text-success fs-13 mb-0"></i>{{data.test_time}} </h6>
+                                                                </td>
+                                                                
+                                                                <td>{{data.payment}}</td>
+                                                                <td><a href="{% url 'clg_stu_rusult' sub='C' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i></a></td>
+                                                            </tr><!-- end -->
+                                                            {% endfor %}
+                                            
+                                                            {% for data in cpplang%}
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div>
+                                                                            <h6 class="fs-14 mb-0">C++</h6>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                
+                                                                <td>
+                                                                    <h6 class="text-success fs-13 mb-0"></i>{{data.test_time}} </h6>
+                                                                </td>
+                                                                
+                                                                <td>{{data.payment}}</td>
+                                                                <td><a href="{% url 'clg_stu_rusult' sub='CPP' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i></a></td>
+                                                            </tr><!-- end -->
+                                                            {% endfor %}
+                                            
+                                                            {% for data in dbms%}
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div>
+                                                                            <h6 class="fs-14 mb-0">DBMS</h6>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                
+                                                                <td>
+                                                                    <h6 class="text-success fs-13 mb-0"></i>{{data.test_time}} </h6>
+                                                                </td>
+                                                                
+                                                                <td>{{data.payment}}</td>
+                                                                <td><a href="{% url 'clg_stu_rusult' sub='DBMS' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i></a></td>
+                                                            </tr><!-- end -->
+                                                            {% endfor %}
+                                            
+                                                            {% for data in golang%}
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div>
+                                                                            <h6 class="fs-14 mb-0">GO</h6>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                
+                                                                <td>
+                                                                    <h6 class="text-success fs-13 mb-0"></i>{{data.test_time}} </h6>
+                                                                </td>
+                                                                
+                                                                <td>{{data.payment}}</td>
+                                                                <td><a href="{% url 'clg_stu_rusult' sub='GO' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i></a></td>
+                                                            </tr><!-- end -->
+                                                            {% endfor %}
+                                            
+                                                            {% for data in html%}
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div>
+                                                                            <h6 class="fs-14 mb-0">HTML</h6>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                
+                                                                <td>
+                                                                    <h6 class="text-success fs-13 mb-0"></i>{{data.test_time}} </h6>
+                                                                </td>
+                                                                
+                                                                <td>{{data.payment}}</td>
+                                                                <td><a href="{% url 'clg_stu_rusult' sub='HTML' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i></a></td>
+                                                            </tr><!-- end -->
+                                                            {% endfor %}
+                                            
+                                                            {% for data in js%}
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div>
+                                                                            <h6 class="fs-14 mb-0">Java Script</h6>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                
+                                                                <td>
+                                                                    <h6 class="text-success fs-13 mb-0"></i>{{data.test_time}} </h6>
+                                                                </td>
+                                                                
+                                                                <td>{{data.payment}}</td>
+                                                                <td><a href="{% url 'clg_stu_rusult' sub='JS' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i></a></td>
+                                                            </tr><!-- end -->
+                                                            {% endfor %}
+                                            
+                                                            {% for data in java%}
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div>
+                                                                            <h6 class="fs-14 mb-0">JAVA</h6>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                
+                                                                <td>
+                                                                    <h6 class="text-success fs-13 mb-0"></i>{{data.test_time}} </h6>
+                                                                </td>
+                                                                
+                                                                <td>{{data.payment}}</td>
+                                                                <td><a href="{% url 'clg_stu_rusult' sub='JAVA' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i></a></td>
+                                                            </tr><!-- end -->
+                                                            {% endfor %}
+                                            
+                                                            {% for data in php%}
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div>
+                                                                            <h6 class="fs-14 mb-0">PHP</h6>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                
+                                                                <td>
+                                                                    <h6 class="text-success fs-13 mb-0"></i>{{data.test_time}} </h6>
+                                                                </td>
+                                                                
+                                                                <td>{{data.payment}}</td>
+                                                                <td><a href="{% url 'clg_stu_rusult' sub='PHP' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i></a></td>
+                                                            </tr><!-- end -->
+                                                            {% endfor %}
+                                            
+                                                            {% for data in rlang%}
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div>
+                                                                            <h6 class="fs-14 mb-0">R</h6>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                
+                                                                <td>
+                                                                    <h6 class="text-success fs-13 mb-0"></i>{{data.test_time}} </h6>
+                                                                </td>
+                                                                
+                                                                <td>{{data.payment}}</td>
+                                                                <td><a href="{% url 'clg_stu_rusult' sub='R' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i></a></td>
+                                                            </tr><!-- end -->
+                                                            {% endfor %}
+                                            
+                                                            {% for data in rust%}
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div>
+                                                                            <h6 class="fs-14 mb-0">RUST</h6>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                
+                                                                <td>
+                                                                    <h6 class="text-success fs-13 mb-0"></i>{{data.test_time}} </h6>
+                                                                </td>
+                                                                
+                                                                <td>{{data.payment}}</td>
+                                                                <td><a href="{% url 'clg_stu_rusult' sub='RUST' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i></a></td>
+                                                            </tr><!-- end -->
+                                                            {% endfor %}
+                                            
+                                                            {% for data in swift%}
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div>
+                                                                            <h6 class="fs-14 mb-0">SWIFT</h6>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                
+                                                                <td>
+                                                                    <h6 class="text-success fs-13 mb-0"></i>{{data.test_time}} </h6>
+                                                                </td>
+                                                                
+                                                                <td>{{data.payment}}</td>
+                                                                <td><a href="{% url 'clg_stu_rusult' sub='SWIFT' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i></a></td>
+                                                            </tr><!-- end -->
+                                                            {% endfor %}
+                                                        </tbody><!-- end tbody -->
+                                                    </table>
+                                                </div><!-- end card body -->
+                                            </div><!-- end card -->
+                                        </div><!-- end col -->
+                                    </div><!-- end row -->
+                                </div>
+                                <!--end col-->
+                            </div>
+                            <!--end row-->
+                        </div>
+                        <div class="tab-pane fade" id="activities" role="tabpanel">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table class="table table-hover table-borderless table-centered align-middle table-nowrap mb-0">
+                                        <thead class="text-muted bg-light-subtle">
+                                            <tr>
+                                                <th>Subject</th>
+                                                <th>Booking date</th>
+                                                <th>Payment Date</th>
+                                                <th>Payment id</th>
+                                            </tr>
+                                        </thead><!-- end thead -->
+                                        <tbody>
+                                            {% for data in python_pay%}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">PYTHON</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>
+                                                    <h6>{{data.pay_time}} </h6>
+                                                </td>
+                                                
+                                                <td>
+                                                    {% if data.payment != 'False' %}
+                                                    <h6 class="text-success fs-13 mb-0">{{data.payment}} </h6>
+                                                    {% endif %}
+                                                    {% if data.payment == 'False' %}
+                                                    <h6 class="text-danger fs-13 mb-0">PAMENT Faild ! </h6>
+                                                    {% endif %}
+                                                </td>
+                                            </tr><!-- end -->
+                                            {% endfor %}
+                                
+                                            {% for data in chash_pay%}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">C#</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>
+                                                    <h6>{{data.pay_time}} </h6>
+                                                </td>
+                                                
+                                                <td>
+                                                    {% if data.payment != 'False' %}
+                                                    <h6 class="text-success fs-13 mb-0">{{data.payment}} </h6>
+                                                    {% endif %}
+                                                    {% if data.payment == 'False' %}
+                                                    <h6 class="text-danger fs-13 mb-0">Payment Faild! </h6>
+                                                    {% endif %}
+                                                    
+                                                </td>
+                                            </tr><!-- end -->
+                                            {% endfor %}
+                                
+                                            {% for data in clang_pay%}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">C</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>{{data.pay_time}}</td>
+                                                <td>
+                                                    {% if data.payment != 'False' %}
+                                                    <h6 class="text-success fs-13 mb-0">{{data.payment}} </h6>
+                                                    {% endif %}
+                                                    {% if data.payment == 'False' %}
+                                                    <h6 class="text-danger fs-13 mb-0">Payment Faild! </h6>
+                                                    {% endif %}
+                                                    
+                                                </td>
+                                            </tr><!-- end -->
+                                            {% endfor %}
+                                
+                                            {% for data in cpplang_pay%}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">C++</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>{{data.pay_time}}</td>
+                                                <td>
+                                                    {% if data.payment != 'False' %}
+                                                    <h6 class="text-success fs-13 mb-0">{{data.payment}} </h6>
+                                                    {% endif %}
+                                                    {% if data.payment == 'False' %}
+                                                    <h6 class="text-danger fs-13 mb-0">Payment Faild! </h6>
+                                                    {% endif %}
+                                                    
+                                                </td>
+                                            </tr><!-- end -->
+                                            {% endfor %}
+                                
+                                            {% for data in dbms_pay%}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">DBMS</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                
+                                                <td>{{data.pay_time}}</td>
+                                                <td>
+                                                    {% if data.payment != 'False' %}
+                                                    <h6 class="text-success fs-13 mb-0">{{data.payment}} </h6>
+                                                    {% endif %}
+                                                    {% if data.payment == 'False' %}
+                                                    <h6 class="text-danger fs-13 mb-0">Payment Faild! </h6>
+                                                    {% endif %}
+                                                    
+                                                </td>
+                                            </tr><!-- end -->
+                                            {% endfor %}
+                                
+                                            {% for data in golang_pay%}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">GO</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>{{data.pay_time}}</td>
+                                                <td>
+                                                    {% if data.payment != 'False' %}
+                                                    <h6 class="text-success fs-13 mb-0">{{data.payment}} </h6>
+                                                    {% endif %}
+                                                    {% if data.payment == 'False' %}
+                                                    <h6 class="text-danger fs-13 mb-0">Payment Faild! </h6>
+                                                    {% endif %}
+                                                    
+                                                </td>
+                                            </tr><!-- end -->
+                                            {% endfor %}
+                                
+                                            {% for data in html_pay%}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">HTML</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>{{data.pay_time}}</td>
+                                                <td>
+                                                    {% if data.payment != 'False' %}
+                                                    <h6 class="text-success fs-13 mb-0">{{data.payment}} </h6>
+                                                    {% endif %}
+                                                    {% if data.payment == 'False' %}
+                                                    <h6 class="text-danger fs-13 mb-0">Payment Faild! </h6>
+                                                    {% endif %}
+                                                    
+                                                </td>
+                                            </tr><!-- end -->
+                                            {% endfor %}
+                                
+                                            {% for data in js_pay%}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">Java Script</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>{{data.pay_time}}</td>
+                                                <td>
+                                                    {% if data.payment != 'False' %}
+                                                    <h6 class="text-success fs-13 mb-0">{{data.payment}} </h6>
+                                                    {% endif %}
+                                                    {% if data.payment == 'False' %}
+                                                    <h6 class="text-danger fs-13 mb-0">Payment Faild! </h6>
+                                                    {% endif %}
+                                                    
+                                                </td>
+                                            </tr><!-- end -->
+                                            {% endfor %}
+                                
+                                            {% for data in java_pay%}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">JAVA</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>{{data.pay_time}}</td>
+                                                <td>
+                                                    {% if data.payment != 'False' %}
+                                                    <h6 class="text-success fs-13 mb-0">{{data.payment}} </h6>
+                                                    {% endif %}
+                                                    {% if data.payment == 'False' %}
+                                                    <h6 class="text-danger fs-13 mb-0">Payment Faild! </h6>
+                                                    {% endif %}
+                                                    
+                                                </td>
+                                            </tr><!-- end -->
+                                            {% endfor %}
+                                
+                                            {% for data in php_pay%}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">PHP</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>{{data.pay_time}}</td>
+                                                <td>
+                                                    {% if data.payment != 'False' %}
+                                                    <h6 class="text-success fs-13 mb-0">{{data.payment}} </h6>
+                                                    {% endif %}
+                                                    {% if data.payment == 'False' %}
+                                                    <h6 class="text-danger fs-13 mb-0">Payment Faild! </h6>
+                                                    {% endif %}
+                                                    
+                                                </td>
+                                            </tr><!-- end -->
+                                            {% endfor %}
+                                
+                                            {% for data in rlang_pay%}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">R</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>{{data.pay_time}}</td>
+                                                <td>
+                                                    {% if data.payment != 'False' %}
+                                                    <h6 class="text-success fs-13 mb-0">{{data.payment}} </h6>
+                                                    {% endif %}
+                                                    {% if data.payment == 'False' %}
+                                                    <h6 class="text-danger fs-13 mb-0">Payment Faild! </h6>
+                                                    {% endif %}
+                                                    
+                                                </td>
+                                            </tr><!-- end -->
+                                            {% endfor %}
+                                
+                                            {% for data in rust_pay%}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">RUST</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>{{data.pay_time}}</td>
+                                                <td>
+                                                    {% if data.payment != 'False' %}
+                                                    <h6 class="text-success fs-13 mb-0">{{data.payment}} </h6>
+                                                    {% endif %}
+                                                    {% if data.payment == 'False' %}
+                                                    <h6 class="text-danger fs-13 mb-0">Payment Faild! </h6>
+                                                    {% endif %}
+                                                    
+                                                </td>
+                                            </tr><!-- end -->
+                                            {% endfor %}
+                                
+                                            {% for data in swift_pay%}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">SWIFT</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>{{data.pay_time}}</td>
+                                                <td>
+                                                    {% if data.payment != 'False' %}
+                                                    <h6 class="text-success fs-13 mb-0">{{data.payment}} </h6>
+                                                    {% endif %}
+                                                    {% if data.payment == 'False' %}
+                                                    <h6 class="text-danger fs-13 mb-0">Payment Faild! </h6>
+                                                    {% endif %}
+                                                    
+                                                </td>
+                                            </tr><!-- end -->
+                                            {% endfor %}
+                                        </tbody><!-- end tbody -->
+                                    </table><!-- end table -->
+                                </div>
+                                <!--end card-body-->
+                            </div>
+                            <!--end card-->
+                        </div>
+                        <!--end tab-pane-->
+                        <div class="tab-pane fade" id="projects" role="tabpanel">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table class="table table-hover table-borderless table-centered align-middle table-nowrap mb-0">
+                                        <thead class="text-muted bg-light-subtle">
+                                            <tr>
+                                                <th>Subject</th>
+                                                <th>Booking date</th>
+                                                <th>Test Date</th>
+                                                <th>Result</th>
+                                            </tr>
+                                        </thead><!-- end thead -->
+                                        <tbody>
+                                            {% for data in python_pay%}
+                                            {% if data.payment != 'False' %}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">PYTHON</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>
+                                                    <h6 >{{data.test_time}} </h6>
+                                                </td>
+                                                
+                                                <td>
+                                                    {% if data.test_time != data.time %}
+                                                    <a href="{% url 'clg_stu_rusult' sub='PY' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i> View Result</a>
+                                                    {% endif %}
+                                                    {% if data.test_time == data.time %}
+                                                        <h6 class="text-danger fs-13 mb-0">Test Haven't taken Yet! </h6>
+                                                    {% endif %}
+                                                </td>
+                                            </tr><!-- end -->
+                                            {% endif %}
+                                            {% endfor %}
+                                
+                                            {% for data in chash_pay%}
+                                            {% if data.payment != 'False' %}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">C#</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>
+                                                    <h6>{{data.test_time}} </h6>
+                                                </td>
+                                                
+                                                <td>
+                                                    {% if data.test_time != data.time %}
+                                                    <a href="{% url 'clg_stu_rusult' sub='CH' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i> View Result</a>
+                                                    {% endif %}
+                                                    {% if data.test_time == data.time %}
+                                                        <h6 class="text-danger fs-13 mb-0">Test Haven't taken Yet! </h6>
+                                                    {% endif %}
+                                                </td>
+                                            </tr><!-- end -->
+                                            {% endif %}
+                                            {% endfor %}
+                                
+                                            {% for data in clang_pay%}
+                                            {% if data.payment != 'False' %}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">C</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>{{data.test_time}}</td>
+                                                <td>
+                                                    {% if data.test_time != data.time %}
+                                                    <a href="{% url 'clg_stu_rusult' sub='C' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i> View Result</a>
+                                                    {% endif %}
+                                                    {% if data.test_time == data.time %}
+                                                        <h6 class="text-danger fs-13 mb-0">Test Haven't taken Yet! </h6>
+                                                    {% endif %}
+                                                </td>
+                                            </tr><!-- end -->
+                                            {% endif %}
+                                            {% endfor %}
+                                
+                                            {% for data in cpplang_pay%}
+                                            {% if data.payment != 'False' %}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">C++</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>{{data.test_time}}</td>
+                                                <td>
+                                                    {% if data.test_time != data.time %}
+                                                    <a href="{% url 'clg_stu_rusult' sub='CPP' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i> View Result</a>
+                                                    {% endif %}
+                                                    {% if data.test_time == data.time %}
+                                                        <h6 class="text-danger fs-13 mb-0">Test Haven't taken Yet! </h6>
+                                                    {% endif %}
+                                                </td>
+                                            </tr><!-- end -->
+                                            {% endif %}
+                                            {% endfor %}
+                                
+                                            {% for data in dbms_pay%}
+                                            {% if data.payment != 'False' %}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">DBMS</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                
+                                                <td>{{data.test_time}}</td>
+                                                <td>
+                                                    {% if data.test_time != data.time %}
+                                                    <a href="{% url 'clg_stu_rusult' sub='DBMS' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i> View Result</a>
+                                                    {% endif %}
+                                                    {% if data.test_time == data.time %}
+                                                        <h6 class="text-danger fs-13 mb-0">Test Haven't taken Yet! </h6>
+                                                    {% endif %}
+                                                </td>
+                                            </tr><!-- end -->
+                                            {% endif %}
+                                            {% endfor %}
+                                
+                                            {% for data in golang_pay%}
+                                            {% if data.payment != 'False' %}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">GO</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>{{data.test_time}}</td>
+                                                <td>
+                                                    {% if data.test_time != data.time %}
+                                                    <a href="{% url 'clg_stu_rusult' sub='GO' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i> View Result</a>
+                                                    {% endif %}
+                                                    {% if data.test_time == data.time %}
+                                                        <h6 class="text-danger fs-13 mb-0">Test Haven't taken Yet! </h6>
+                                                    {% endif %}
+                                                </td>
+                                            </tr><!-- end -->
+                                            {% endif %}
+                                            {% endfor %}
+                                
+                                            {% for data in html_pay%}
+                                            {% if data.payment != 'False' %}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">HTML</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>{{data.test_time}}</td>
+                                                <td>
+                                                    {% if data.test_time != data.time %}
+                                                    <a href="{% url 'clg_stu_rusult' sub='HTML' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i> View Result</a>
+                                                    {% endif %}
+                                                    {% if data.test_time == data.time %}
+                                                        <h6 class="text-danger fs-13 mb-0">Test Haven't taken Yet! </h6>
+                                                    {% endif %}
+                                                </td>
+                                            </tr><!-- end -->
+                                            {% endif %}
+                                            {% endfor %}
+                                
+                                            {% for data in js_pay%}
+                                            {% if data.payment != 'False' %}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">Java Script</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>{{data.test_time}}</td>
+                                                <td>
+                                                    {% if data.test_time != data.time %}
+                                                    <a href="{% url 'clg_stu_rusult' sub='JS' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i> View Result</a>
+                                                    {% endif %}
+                                                    {% if data.test_time == data.time %}
+                                                        <h6 class="text-danger fs-13 mb-0">Test Haven't taken Yet! </h6>
+                                                    {% endif %}
+                                                </td>
+                                            </tr><!-- end -->
+                                            {% endif %}
+                                            {% endfor %}
+                                
+                                            {% for data in java_pay%}
+                                            {% if data.payment != 'False' %}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">JAVA</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>{{data.test_time}}</td>
+                                                <td>
+                                                    {% if data.test_time != data.time %}
+                                                    <a href="{% url 'clg_stu_rusult' sub='JAVA' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i> View Result</a>
+                                                    {% endif %}
+                                                    {% if data.test_time == data.time %}
+                                                        <h6 class="text-danger fs-13 mb-0">Test Haven't taken Yet! </h6>
+                                                    {% endif %}
+                                                </td>
+                                            </tr><!-- end -->
+                                            {% endif %}
+                                            {% endfor %}
+                                
+                                            {% for data in php_pay%}
+                                            {% if data.payment != 'False' %}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">PHP</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>{{data.test_time}}</td>
+                                                <td>
+                                                    {% if data.test_time != data.time %}
+                                                    <a href="{% url 'clg_stu_rusult' sub='PHP' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i></a>
+                                                    {% endif %}
+                                                    {% if data.test_time == data.time %}
+                                                        <h6 class="text-danger fs-13 mb-0">Test Haven't taken Yet! </h6>
+                                                    {% endif %}
+                                                </td>
+                                            </tr><!-- end -->
+                                            {% endif %}
+                                            {% endfor %}
+                                
+                                            {% for data in rlang_pay%}
+                                            {% if data.payment != 'False' %}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">R</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>{{data.test_time}}</td>
+                                                <td>
+                                                    {% if data.test_time != data.time %}
+                                                    <a href="{% url 'clg_stu_rusult' sub='R' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i></a>
+                                                    {% endif %}
+                                                    {% if data.test_time == data.time %}
+                                                        <h6 class="text-danger fs-13 mb-0">Test Haven't taken Yet! </h6>
+                                                    {% endif %}
+                                                </td>
+                                            </tr><!-- end -->
+                                            {% endif %}
+                                            {% endfor %}
+                                
+                                            {% for data in rust_pay%}
+                                            {% if data.payment != 'False' %}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">RUST</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>{{data.test_time}}</td>
+                                                <td>
+                                                    {% if data.test_time != data.time %}
+                                                    <a href="{% url 'clg_stu_rusult' sub='RUST' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i></a>
+                                                    {% endif %}
+                                                    {% if data.test_time == data.time %}
+                                                        <h6 class="text-danger fs-13 mb-0">Test Haven't taken Yet! </h6>
+                                                    {% endif %}
+                                                </td>
+
+                                            </tr><!-- end -->
+                                            {% endif %}
+                                            {% endfor %}
+                                
+                                            {% for data in swift_pay%}
+                                            {% if data.payment != 'False' %}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">SWIFT</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>{{data.time}}</td>
+                                                <td>{{data.test_time}}</td>
+                                                <td>
+                                                {% if data.test_time != data.time %}
+                                                <a href="{% url 'clg_stu_rusult' sub='SWIFT' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i></a>
+                                                {% endif %}
+                                                {% if data.test_time == data.time %}
+                                                    <h6 class="text-danger fs-13 mb-0">Test Haven't taken Yet! </h6>
+                                                {% endif %}
+                                                </td>
+                                            </tr><!-- end -->
+                                            {% endif %}
+                                            {% endfor %}
+                                        </tbody><!-- end tbody -->
+                                    </table><!-- end table -->
+                                    
+                                </div>
+                                <!--end card-body-->
+                            </div>
+                            <!--end card-->
+                        </div>
+                        <!--end tab-pane-->
+                        <div class="tab-pane fade" id="documents" role="tabpanel">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table class="table table-hover table-borderless table-centered align-middle table-nowrap mb-0">
+                                        <thead class="text-muted bg-light-subtle">
+                                            <tr>
+                                                <th>Subject</th>
+                                                <th>Booking date</th>
+                                                <th>Test Compleated</th>
+                                                <th>Payment Date</th>
+                                                <th>Payment id</th>
+                                                <th>View Result</th>
+                                            </tr>
+                                        </thead><!-- end thead -->
+                                        <tbody>
+                                            {% for data in python%}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">PYTHON</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>
+                                                    <h6 class="text-success fs-13 mb-0"></i>{{data.test_time}} </h6>
+                                                </td>
+                                                <td>{{data.pay_time}}</td>
+                                                <td>{{data.payment}}</td>
+                                                <td><a href="{% url 'deep_rusult' sub='PY' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i></a></td>
+                                            </tr><!-- end -->
+                                            {% endfor %}
+                            
+                                            {% for data in chash%}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">C#</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>
+                                                    <h6 class="text-success fs-13 mb-0"></i>{{data.test_time}} </h6>
+                                                </td>
+                                                <td>{{data.pay_time}}</td>
+                                                <td>{{data.payment}}</td>
+                                                <td><a href="{% url 'deep_rusult' sub='CH' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i></a></td>
+                                            </tr><!-- end -->
+                                            {% endfor %}
+                            
+                                            {% for data in clang%}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">C</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>
+                                                    <h6 class="text-success fs-13 mb-0"></i>{{data.test_time}} </h6>
+                                                </td>
+                                                <td>{{data.pay_time}}</td>
+                                                <td>{{data.payment}}</td>
+                                                <td><a href="{% url 'deep_rusult' sub='C' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i></a></td>
+                                            </tr><!-- end -->
+                                            {% endfor %}
+                            
+                                            {% for data in cpplang%}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">C++</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>
+                                                    <h6 class="text-success fs-13 mb-0"></i>{{data.test_time}} </h6>
+                                                </td>
+                                                <td>{{data.pay_time}}</td>
+                                                <td>{{data.payment}}</td>
+                                                <td><a href="{% url 'deep_rusult' sub='CPP' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i></a></td>
+                                            </tr><!-- end -->
+                                            {% endfor %}
+                            
+                                            {% for data in dbms%}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">DBMS</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>
+                                                    <h6 class="text-success fs-13 mb-0"></i>{{data.test_time}} </h6>
+                                                </td>
+                                                <td>{{data.pay_time}}</td>
+                                                <td>{{data.payment}}</td>
+                                                <td><a href="{% url 'deep_rusult' sub='DBMS' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i></a></td>
+                                            </tr><!-- end -->
+                                            {% endfor %}
+                            
+                                            {% for data in golang%}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">GO</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>
+                                                    <h6 class="text-success fs-13 mb-0"></i>{{data.test_time}} </h6>
+                                                </td>
+                                                <td>{{data.pay_time}}</td>
+                                                <td>{{data.payment}}</td>
+                                                <td><a href="{% url 'deep_rusult' sub='GO' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i></a></td>
+                                            </tr><!-- end -->
+                                            {% endfor %}
+                            
+                                            {% for data in html%}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">HTML</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>
+                                                    <h6 class="text-success fs-13 mb-0"></i>{{data.test_time}} </h6>
+                                                </td>
+                                                <td>{{data.pay_time}}</td>
+                                                <td>{{data.payment}}</td>
+                                                <td><a href="{% url 'deep_rusult' sub='HTML' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i></a></td>
+                                            </tr><!-- end -->
+                                            {% endfor %}
+                            
+                                            {% for data in js%}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">Java Script</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>
+                                                    <h6 class="text-success fs-13 mb-0"></i>{{data.test_time}} </h6>
+                                                </td>
+                                                <td>{{data.pay_time}}</td>
+                                                <td>{{data.payment}}</td>
+                                                <td><a href="{% url 'deep_rusult' sub='JS' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i></a></td>
+                                            </tr><!-- end -->
+                                            {% endfor %}
+                            
+                                            {% for data in java%}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">JAVA</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>
+                                                    <h6 class="text-success fs-13 mb-0"></i>{{data.test_time}} </h6>
+                                                </td>
+                                                <td>{{data.pay_time}}</td>
+                                                <td>{{data.payment}}</td>
+                                                <td><a href="{% url 'deep_rusult' sub='JAVA' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i></a></td>
+                                            </tr><!-- end -->
+                                            {% endfor %}
+                            
+                                            {% for data in php%}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">PHP</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>
+                                                    <h6 class="text-success fs-13 mb-0"></i>{{data.test_time}} </h6>
+                                                </td>
+                                                <td>{{data.pay_time}}</td>
+                                                <td>{{data.payment}}</td>
+                                                <td><a href="{% url 'deep_rusult' sub='PHP' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i></a></td>
+                                            </tr><!-- end -->
+                                            {% endfor %}
+                            
+                                            {% for data in rlang%}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">PHP</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>
+                                                    <h6 class="text-success fs-13 mb-0"></i>{{data.test_time}} </h6>
+                                                </td>
+                                                <td>{{data.pay_time}}</td>
+                                                <td>{{data.payment}}</td>
+                                                <td><a href="{% url 'deep_rusult' sub='R' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i></a></td>
+                                            </tr><!-- end -->
+                                            {% endfor %}
+                            
+                                            {% for data in rust%}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">RUST</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>
+                                                    <h6 class="text-success fs-13 mb-0"></i>{{data.test_time}} </h6>
+                                                </td>
+                                                <td>{{data.pay_time}}</td>
+                                                <td>{{data.payment}}</td>
+                                                <td><a href="{% url 'deep_rusult' sub='RUST' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i></a></td>
+                                            </tr><!-- end -->
+                                            {% endfor %}
+                            
+                                            {% for data in swift%}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <h6 class="fs-14 mb-0">SWIFT</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> {{data.time}}</td>
+                                                <td>
+                                                    <h6 class="text-success fs-13 mb-0"></i>{{data.test_time}} </h6>
+                                                </td>
+                                                <td>{{data.pay_time}}</td>
+                                                <td>{{data.payment}}</td>
+                                                <td><a href="{% url 'deep_rusult' sub='SWIFT' num=data.id  %}" class="btn btn-sm btn-soft-secondary material-shadow-none"><i class="ri-eye-fill "></i></a></td>
+                                            </tr><!-- end -->
+                                            {% endfor %}
+                                        </tbody><!-- end tbody -->
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end tab-pane-->
+                    </div>
+                    <!--end tab-content-->
+                </div>
+            </div>
+            <!--end col-->
+        </div>
+        <!--end row-->
+
+    </div><!-- container-fluid -->
+</div><!-- End Page-content -->
+
+
+{% endblock content%}
